@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8793CC721F3C3B83006071ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC711F3C3B83006071ED /* AppDelegate.swift */; };
-		8793CC741F3C3B83006071ED /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC731F3C3B83006071ED /* MasterViewController.swift */; };
-		8793CC761F3C3B83006071ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC751F3C3B83006071ED /* DetailViewController.swift */; };
+		8793CC741F3C3B83006071ED /* GoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */; };
+		8793CC761F3C3B83006071ED /* GoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC751F3C3B83006071ED /* GoodDetailViewController.swift */; };
 		8793CC791F3C3B83006071ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8793CC771F3C3B83006071ED /* Main.storyboard */; };
 		8793CC7B1F3C3B83006071ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8793CC7A1F3C3B83006071ED /* Assets.xcassets */; };
 		8793CC7E1F3C3B83006071ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8793CC7C1F3C3B83006071ED /* LaunchScreen.storyboard */; };
 		8793CC891F3C3B83006071ED /* ShoppingCartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC881F3C3B83006071ED /* ShoppingCartTests.swift */; };
+		8793CC941F3C3D79006071ED /* Good.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC931F3C3D79006071ED /* Good.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +30,8 @@
 /* Begin PBXFileReference section */
 		8793CC6E1F3C3B83006071ED /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8793CC711F3C3B83006071ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8793CC731F3C3B83006071ED /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		8793CC751F3C3B83006071ED /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTableViewController.swift; sourceTree = "<group>"; };
+		8793CC751F3C3B83006071ED /* GoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailViewController.swift; sourceTree = "<group>"; };
 		8793CC781F3C3B83006071ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8793CC7A1F3C3B83006071ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8793CC7D1F3C3B83006071ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		8793CC841F3C3B83006071ED /* ShoppingCartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingCartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8793CC881F3C3B83006071ED /* ShoppingCartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTests.swift; sourceTree = "<group>"; };
 		8793CC8A1F3C3B83006071ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8793CC931F3C3D79006071ED /* Good.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Good.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		871057CD1F3C4C80004BD2EC /* GoodsSelection */ = {
+			isa = PBXGroup;
+			children = (
+				8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */,
+				8793CC751F3C3B83006071ED /* GoodDetailViewController.swift */,
+				8793CC931F3C3D79006071ED /* Good.swift */,
+			);
+			name = GoodsSelection;
+			sourceTree = "<group>";
+		};
 		8793CC651F3C3B83006071ED = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				8793CC711F3C3B83006071ED /* AppDelegate.swift */,
-				8793CC731F3C3B83006071ED /* MasterViewController.swift */,
-				8793CC751F3C3B83006071ED /* DetailViewController.swift */,
+				871057CD1F3C4C80004BD2EC /* GoodsSelection */,
 				8793CC771F3C3B83006071ED /* Main.storyboard */,
 				8793CC7A1F3C3B83006071ED /* Assets.xcassets */,
 				8793CC7C1F3C3B83006071ED /* LaunchScreen.storyboard */,
@@ -202,8 +213,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8793CC761F3C3B83006071ED /* DetailViewController.swift in Sources */,
-				8793CC741F3C3B83006071ED /* MasterViewController.swift in Sources */,
+				8793CC761F3C3B83006071ED /* GoodDetailViewController.swift in Sources */,
+				8793CC741F3C3B83006071ED /* GoodsTableViewController.swift in Sources */,
+				8793CC941F3C3D79006071ED /* Good.swift in Sources */,
 				8793CC721F3C3B83006071ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +422,7 @@
 				8793CC8F1F3C3B83006071ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8793CC901F3C3B83006071ED /* Build configuration list for PBXNativeTarget "ShoppingCartTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +431,7 @@
 				8793CC921F3C3B83006071ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

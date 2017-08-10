@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  GoodsTableViewController.swift
 //  ShoppingCart
 //
 //  Created by Istvan Balogh on 2017. 08. 10..
@@ -8,33 +8,34 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class GoodsTableViewController: UITableViewController {
 
-    var detailViewController: DetailViewController? = nil
+    var goodDetailViewController: GoodDetailViewController? = nil
     var objects = [Any]()
-
+    var goods = [Good]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        goods = [Good(name: "Peas", price: NSDecimalNumber(decimal: 0.95), unit: .bag),
+                 Good(name: "Eggs", price: NSDecimalNumber(decimal: 2.1), unit: .dozen),
+                 Good(name: "Milk", price: NSDecimalNumber(decimal: 1.30), unit: .bottle),
+                 Good(name: "Beans", price: NSDecimalNumber(decimal: 0.73), unit: .can)
+                ]
+        
         navigationItem.leftBarButtonItem = editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            goodDetailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? GoodDetailViewController
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func insertNewObject(_ sender: Any) {
@@ -48,9 +49,9 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                let good = self.goods[indexPath.row]
+                let controller = (segue.destination as! UINavigationController).topViewController as! GoodDetailViewController
+                controller.good = GoodDetailsViewModel(good: good)
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -59,19 +60,16 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return self.goods.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let good = GoodCellViewModel(good: self.goods[indexPath.row])
+        cell.textLabel?.text = good.name
+        cell.detailTextLabel?.text = good.pricePerUnit
         return cell
     }
 
@@ -82,7 +80,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            goods.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
