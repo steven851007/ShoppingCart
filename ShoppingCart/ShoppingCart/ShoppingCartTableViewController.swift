@@ -13,15 +13,28 @@ class ShoppingCartTableViewController: UITableViewController {
     var shoppingCart: ShoppingCart!
     
     private let showCurrencySelectorSegueId = "showCurrencySelector"
+    private var selectedCurrency = Currencies.selectedCurrency
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "$ " + self.shoppingCart.totalPrice.stringValue
+        self.title = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCart.totalPrice)
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         let settingsButton = UIBarButtonItem(title: "\u{2699}", style: .plain, target: self, action: #selector(showCurrencySelector(_:)))
         navigationItem.rightBarButtonItem = settingsButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if self.selectedCurrency != Currencies.selectedCurrency {
+            self.selectedCurrency = Currencies.selectedCurrency
+            self.updateView()
+        }
+    }
+    
+    private func updateView() {
+        self.title = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCart.totalPrice)
+        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [], with: .automatic)
     }
     
     // MARK: - Navigation
@@ -63,7 +76,7 @@ class ShoppingCartTableViewController: UITableViewController {
         if editingStyle == .delete {
             self.shoppingCart.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            self.title = "$ " + self.shoppingCart.totalPrice.stringValue
+            self.title = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCart.totalPrice)
         }
     }
     

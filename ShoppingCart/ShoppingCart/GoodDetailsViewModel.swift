@@ -9,7 +9,9 @@
 import Foundation
 
 class GoodDetailsViewModel {
+    
     let good: Good
+    
     
     init(good: Good) {
         self.good = good
@@ -20,7 +22,9 @@ class GoodDetailsViewModel {
     }
     
     var descriptionTitle: String {
-        return self.good.name + " ($ " + self.good.price.stringValue + " per " + self.good.unit.rawValue + ")"
+        let price = self.good.price.multiplying(by: Currencies.selectedExchangeRate)
+        let formattedPrice = CurrencyFormatter.formattedStringCurrency(value: price)
+        return "\(self.good.name) ( \(formattedPrice) per \(self.good.unit.rawValue))"
     }
     
     var detailedDescription: String {

@@ -20,3 +20,4 @@ extension Currency: Equatable {
         return lhs.code == rhs.code
     }
 }
+

@@ -11,9 +11,9 @@ import UIKit
 class GoodsTableViewController: UITableViewController {
 
     var goodDetailViewController: GoodDetailViewController? = nil
-    var objects = [Any]()
     var goods = [Good]()
     let shoppingCart = ShoppingCart()
+    private var selectedCurrency = Currencies.selectedCurrency
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +34,18 @@ class GoodsTableViewController: UITableViewController {
             goodDetailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? GoodDetailViewController
         }
     }
+    
+    private func updateView() {
+        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [], with: .automatic)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        if self.selectedCurrency != Currencies.selectedCurrency {
+            self.selectedCurrency = Currencies.selectedCurrency
+            self.updateView()
+        }
     }
 
     func showShoppingCart(_ sender: Any) {
@@ -78,7 +86,6 @@ class GoodsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
 
@@ -86,8 +93,6 @@ class GoodsTableViewController: UITableViewController {
         if editingStyle == .delete {
             goods.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 

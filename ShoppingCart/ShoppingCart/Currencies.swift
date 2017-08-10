@@ -15,8 +15,17 @@ class Currencies {
             guard selectedCurrency.exchangeRate != nil else {
                 fatalError("Only currencies with exchange rates should be selected")
             }
+            
         }
     }
+    
+    static var selectedExchangeRate: NSDecimalNumber {
+        guard let exchangeRate = self.selectedCurrency.exchangeRate else {
+            fatalError("Only currencies with exchange rates should be selected")
+        }
+        return exchangeRate
+    }
+    
     private(set) static var currencies = [Currency(code: "USD", name: "United States Dollar", exchangeRate: 1)]
     
     static func downloadCurrencies() {

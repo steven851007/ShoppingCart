@@ -16,6 +16,7 @@ class GoodDetailViewController: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var descriptionLabel: UILabel!
     private let shoppingCartSegueId = "shoppingCart"
+    private var selectedCurrency = Currencies.selectedCurrency
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,14 @@ class GoodDetailViewController: UIViewController {
         let addButton = UIBarButtonItem(image: UIImage(named: "ShoppingBag"), style: .plain, target: self, action: #selector(showShoppingCart(_:)))
         navigationItem.rightBarButtonItem = addButton
         configureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.selectedCurrency != Currencies.selectedCurrency {
+            self.selectedCurrency = Currencies.selectedCurrency
+            self.configureView()
+        }
     }
     
     func configureView() {

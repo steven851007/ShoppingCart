@@ -21,6 +21,7 @@ class ShoppingCartItemCellViewModel {
     }
     
     var totalPrice: String {
-        return "Total: $ " + self.shoppingCartItem.totalPrice.stringValue
+        let formattedPrice = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCartItem.totalPrice)
+        return "Total: \(formattedPrice)"
     }
 }

@@ -21,6 +21,8 @@ class GoodCellViewModel {
     }
     
     var pricePerUnit: String {
-        return "$ " + self.good.price.stringValue + " per " + self.good.unit.rawValue
+        let price = self.good.price.multiplying(by: Currencies.selectedExchangeRate)
+        let formattedPrice = CurrencyFormatter.formattedStringCurrency(value: price)
+        return "\(formattedPrice) per \(self.good.unit.rawValue)"
     }
 }

@@ -10,11 +10,10 @@ import UIKit
 
 class CurrencySelectorTableViewController: UITableViewController {
 
-    var currencies = [Currency]()
+    var currencies = Currencies.currencies
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.currencies = Currencies.currencies
         self.title = "Choose currency"
     }
 
@@ -47,7 +46,7 @@ class CurrencySelectorTableViewController: UITableViewController {
         activityIndicatorView.startAnimating()
         self.navigationItem.titleView = activityIndicatorView
         self.view.isUserInteractionEnabled = false
-        Currencies.changeCurrency(to: self.currencies[indexPath.row]) { (successfull) in
+        Currencies.changeCurrency(to: self.currencies[indexPath.row]) { [unowned self] (successfull) in
             if successfull {
                self.dismiss(animated: true, completion: nil)
             } else {
