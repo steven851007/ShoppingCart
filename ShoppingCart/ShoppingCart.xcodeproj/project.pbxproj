@@ -13,6 +13,10 @@
 		871057D61F3C6BF9004BD2EC /* GoodCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057D51F3C6BF9004BD2EC /* GoodCellViewModel.swift */; };
 		871057DB1F3C6E23004BD2EC /* ShoppingCartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057DA1F3C6E23004BD2EC /* ShoppingCartItem.swift */; };
 		871057DD1F3C6E40004BD2EC /* ShoppingCartItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057DC1F3C6E40004BD2EC /* ShoppingCartItemCellViewModel.swift */; };
+		871057E21F3C70A0004BD2EC /* CurrencySelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057E11F3C70A0004BD2EC /* CurrencySelectorTableViewController.swift */; };
+		871057E41F3C747E004BD2EC /* CurrencyDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057E31F3C747E004BD2EC /* CurrencyDownloader.swift */; };
+		871057E61F3CC69F004BD2EC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057E51F3CC69F004BD2EC /* Currency.swift */; };
+		871057E81F3CC6C0004BD2EC /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057E71F3CC6C0004BD2EC /* Currencies.swift */; };
 		8793CC721F3C3B83006071ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC711F3C3B83006071ED /* AppDelegate.swift */; };
 		8793CC741F3C3B83006071ED /* GoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */; };
 		8793CC761F3C3B83006071ED /* GoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC751F3C3B83006071ED /* GoodDetailViewController.swift */; };
@@ -40,6 +44,10 @@
 		871057D51F3C6BF9004BD2EC /* GoodCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodCellViewModel.swift; sourceTree = "<group>"; };
 		871057DA1F3C6E23004BD2EC /* ShoppingCartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartItem.swift; sourceTree = "<group>"; };
 		871057DC1F3C6E40004BD2EC /* ShoppingCartItemCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartItemCellViewModel.swift; sourceTree = "<group>"; };
+		871057E11F3C70A0004BD2EC /* CurrencySelectorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectorTableViewController.swift; sourceTree = "<group>"; };
+		871057E31F3C747E004BD2EC /* CurrencyDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyDownloader.swift; sourceTree = "<group>"; };
+		871057E51F3CC69F004BD2EC /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		871057E71F3CC6C0004BD2EC /* Currencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		8793CC6E1F3C3B83006071ED /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8793CC711F3C3B83006071ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTableViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +151,41 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		871057E91F3CC71F004BD2EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				871057E71F3CC6C0004BD2EC /* Currencies.swift */,
+				871057E51F3CC69F004BD2EC /* Currency.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		871057EA1F3CC72A004BD2EC /* CurrencySelection */ = {
+			isa = PBXGroup;
+			children = (
+				871057EB1F3CC738004BD2EC /* ViewController */,
+				871057EC1F3CC748004BD2EC /* Networking */,
+				871057E91F3CC71F004BD2EC /* Model */,
+			);
+			name = CurrencySelection;
+			sourceTree = "<group>";
+		};
+		871057EB1F3CC738004BD2EC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				871057E11F3C70A0004BD2EC /* CurrencySelectorTableViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		871057EC1F3CC748004BD2EC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				871057E31F3C747E004BD2EC /* CurrencyDownloader.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		8793CC651F3C3B83006071ED = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				8793CC711F3C3B83006071ED /* AppDelegate.swift */,
+				871057EA1F3CC72A004BD2EC /* CurrencySelection */,
 				871057D21F3C6BC3004BD2EC /* ShoppingCart */,
 				871057CD1F3C4C80004BD2EC /* GoodsSelection */,
 				8793CC771F3C3B83006071ED /* Main.storyboard */,
@@ -288,11 +332,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				871057CF1F3C52A4004BD2EC /* ShoppingCart.swift in Sources */,
+				871057E41F3C747E004BD2EC /* CurrencyDownloader.swift in Sources */,
 				871057DB1F3C6E23004BD2EC /* ShoppingCartItem.swift in Sources */,
+				871057E21F3C70A0004BD2EC /* CurrencySelectorTableViewController.swift in Sources */,
 				871057D41F3C6BE1004BD2EC /* GoodDetailsViewModel.swift in Sources */,
 				8793CC761F3C3B83006071ED /* GoodDetailViewController.swift in Sources */,
 				8793CC741F3C3B83006071ED /* GoodsTableViewController.swift in Sources */,
 				8793CC941F3C3D79006071ED /* Good.swift in Sources */,
+				871057E81F3CC6C0004BD2EC /* Currencies.swift in Sources */,
+				871057E61F3CC69F004BD2EC /* Currency.swift in Sources */,
 				8793CC721F3C3B83006071ED /* AppDelegate.swift in Sources */,
 				871057D11F3C5A17004BD2EC /* ShoppingCartTableViewController.swift in Sources */,
 				871057D61F3C6BF9004BD2EC /* GoodCellViewModel.swift in Sources */,
