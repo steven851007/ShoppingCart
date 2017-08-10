@@ -8,8 +8,10 @@
 
 import Foundation
 
+// This class holds all the available currencies. Before downloading the rest only $ available.
 class Currencies {
     
+    // The currently selected currency. Only currency with a valid exchange rate can be selected
     private(set) static var selectedCurrency = Currency(code: "USD", name: "United States Dollar", exchangeRate: 1) {
         didSet {
             guard selectedCurrency.exchangeRate != nil else {
@@ -19,6 +21,7 @@ class Currencies {
         }
     }
     
+    // This property gurantees a valid exchange rate for the selected currency.
     static var selectedExchangeRate: NSDecimalNumber {
         guard let exchangeRate = self.selectedCurrency.exchangeRate else {
             fatalError("Only currencies with exchange rates should be selected")
@@ -26,8 +29,10 @@ class Currencies {
         return exchangeRate
     }
     
+    // Available currencies
     private(set) static var currencies = [Currency(code: "USD", name: "United States Dollar", exchangeRate: 1)]
     
+    // Download the available currencies. Call this method at the beginning of the application. It will append the new currencies tu the existing array
     static func downloadCurrencies() {
         let currencyDownloader = CurrencyDownloader()
         currencyDownloader.downloadCurrencies { (currencies, error) in
@@ -41,6 +46,10 @@ class Currencies {
         }
     }
     
+    /** Sets the currently selected currency. 
+     ** If the exchange rate doesn't exist for the selected currency it will try to download first. 
+     ** If it succeeds sets the new selected currency, if it fails it retuns an error and does nothing.
+    **/
     static func changeCurrency(to currency: Currency, completion: @escaping (Bool) -> Void) {
         if currency.exchangeRate != nil {
             self.selectedCurrency = currency

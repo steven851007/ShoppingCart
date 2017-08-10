@@ -19,6 +19,7 @@ class GoodsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Goods"
+        // This should be set from outside, but for simplicity I just create it here.
         goods = [Good(name: "Peas", price: NSDecimalNumber(decimal: 0.95), unit: .bag),
                  Good(name: "Eggs", price: NSDecimalNumber(decimal: 2.1), unit: .dozen),
                  Good(name: "Milk", price: NSDecimalNumber(decimal: 1.30), unit: .bottle),

@@ -11,14 +11,15 @@ import Foundation
 class CurrencyFormatter {
     
     static let numberFormatter: NumberFormatter = {
+        // Static formatter to avoid performance issues
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         return formatter
     }()
     
-    static func formattedStringCurrency(value: NSDecimalNumber) -> String {
-        self.numberFormatter.currencyCode = Currencies.selectedCurrency.code
-        guard let formattedNumber = self.numberFormatter.string(from: value) else {
+    static func formattedPrice(price: NSDecimalNumber, to currency: Currency) -> String {
+        self.numberFormatter.currencyCode = currency.code
+        guard let formattedNumber = self.numberFormatter.string(from: price) else {
             assert(true, "Cannot format value")
             return ""
         }

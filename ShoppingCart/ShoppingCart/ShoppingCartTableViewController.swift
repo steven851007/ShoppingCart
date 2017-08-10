@@ -18,11 +18,11 @@ class ShoppingCartTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCart.totalPrice)
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         let settingsButton = UIBarButtonItem(title: "\u{2699}", style: .plain, target: self, action: #selector(showCurrencySelector(_:)))
         navigationItem.rightBarButtonItem = settingsButton
+        self.updateView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +33,8 @@ class ShoppingCartTableViewController: UITableViewController {
     }
     
     private func updateView() {
-        self.title = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCart.totalPrice)
+        let price = self.shoppingCart.totalPrice.multiplying(by: Currencies.selectedExchangeRate)
+        self.title = CurrencyFormatter.formattedPrice(price: price, to: Currencies.selectedCurrency)
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [], with: .automatic)
     }
     
@@ -76,24 +77,8 @@ class ShoppingCartTableViewController: UITableViewController {
         if editingStyle == .delete {
             self.shoppingCart.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            self.title = CurrencyFormatter.formattedStringCurrency(value: self.shoppingCart.totalPrice)
+            self.updateView()
         }
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 }

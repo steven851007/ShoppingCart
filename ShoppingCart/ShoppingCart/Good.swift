@@ -15,8 +15,8 @@ enum GoodUnit: String {
     case can = "can"
 }
 
-class Good {
-    
+struct Good {
+
     let uuid = NSUUID()
     let name: String
     // Price / unit always in dollars ($).
@@ -27,6 +27,13 @@ class Good {
         self.name = name
         self.price = price
         self.unit = unit
+    }
+}
+
+extension Good: Equatable {
+
+    static func ==(lhs: Good, rhs: Good) -> Bool {
+        return lhs.uuid == rhs.uuid
     }
 }
 

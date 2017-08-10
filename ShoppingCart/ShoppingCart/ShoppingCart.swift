@@ -11,6 +11,8 @@ import Foundation
 class ShoppingCart {
     
     private var shoppingCartItems = [ShoppingCartItem]()
+    
+    // The price of all the items in the shopping cart in $.
     private(set) var totalPrice: NSDecimalNumber = 0.0
     
     var count: Int {

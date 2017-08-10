@@ -11,26 +11,63 @@ import XCTest
 
 class ShoppingCartTests: XCTestCase {
     
+    var shoppingCart: ShoppingCart!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.shoppingCart = ShoppingCart()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.shoppingCart = nil
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testIsEmpty() {
+        XCTAssertTrue(self.shoppingCart.isEmpty)
+        let good = Good(name: "Test", price: NSDecimalNumber(value: 1), unit: .bag)
+        self.shoppingCart.add(good: good)
+        XCTAssertFalse(self.shoppingCart.isEmpty)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testCount() {
+        XCTAssertEqual(self.shoppingCart.count, 0)
+        let good = Good(name: "Test", price: NSDecimalNumber(value: 1), unit: .bag)
+        self.shoppingCart.add(good: good)
+        XCTAssertEqual(self.shoppingCart.count, 1)
+        self.shoppingCart.add(good: good)
+        XCTAssertEqual(self.shoppingCart.count, 1)
+        XCTAssertEqual(self.shoppingCart[0].count, 2)
     }
+    
+    func testAdd() {
+        let good = Good(name: "Test", price: NSDecimalNumber(value: 1), unit: .bag)
+        self.shoppingCart.add(good: good)
+        XCTAssertEqual(self.shoppingCart.count, 1)
+        XCTAssertEqual(self.shoppingCart[0].good, good)
+    }
+    
+    func testRemove() {
+        let good = Good(name: "Test", price: NSDecimalNumber(value: 1), unit: .bag)
+        self.shoppingCart.add(good: good)
+        self.shoppingCart.remove(good: good)
+        XCTAssertEqual(self.shoppingCart.count, 0)
+        self.shoppingCart.add(good: good)
+        self.shoppingCart.remove(at: 0)
+        XCTAssertEqual(self.shoppingCart.count, 0)
+    }
+    
+    func testTotalPrice() {
+        XCTAssertEqual(self.shoppingCart.totalPrice, NSDecimalNumber(value: 0))
+        let good = Good(name: "Test", price: NSDecimalNumber(value: 1), unit: .bag)
+        self.shoppingCart.add(good: good)
+        XCTAssertEqual(self.shoppingCart.totalPrice, NSDecimalNumber(value: 1))
+        self.shoppingCart.add(good: good)
+        XCTAssertEqual(self.shoppingCart.totalPrice, NSDecimalNumber(value: 2))
+        let good1 = Good(name: "Test1", price: NSDecimalNumber(value: 11), unit: .bag)
+        self.shoppingCart.add(good: good1)
+        XCTAssertEqual(self.shoppingCart.totalPrice, NSDecimalNumber(value: 13))
+    }
+    
     
 }

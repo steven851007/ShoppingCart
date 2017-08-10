@@ -16,6 +16,19 @@ class CurrencySelectorTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Choose currency"
     }
+    
+    func showActivityIndicator() {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicatorView.color = .black
+        activityIndicatorView.startAnimating()
+        self.navigationItem.titleView = activityIndicatorView
+        self.view.isUserInteractionEnabled = false
+    }
+    
+    func hideActivityIndicator() {
+        self.navigationItem.titleView = nil
+        self.view.isUserInteractionEnabled = true
+    }
 
     // MARK: - Table view data source
 
@@ -41,11 +54,7 @@ class CurrencySelectorTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicatorView.color = .black
-        activityIndicatorView.startAnimating()
-        self.navigationItem.titleView = activityIndicatorView
-        self.view.isUserInteractionEnabled = false
+        self.showActivityIndicator()
         Currencies.changeCurrency(to: self.currencies[indexPath.row]) { [unowned self] (successfull) in
             if successfull {
                self.dismiss(animated: true, completion: nil)
@@ -54,8 +63,7 @@ class CurrencySelectorTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            self.navigationItem.titleView = nil
-            self.view.isUserInteractionEnabled = true
+            self.hideActivityIndicator()
         }
         
     }

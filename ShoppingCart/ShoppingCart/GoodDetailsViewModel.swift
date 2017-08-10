@@ -23,7 +23,7 @@ class GoodDetailsViewModel {
     
     var descriptionTitle: String {
         let price = self.good.price.multiplying(by: Currencies.selectedExchangeRate)
-        let formattedPrice = CurrencyFormatter.formattedStringCurrency(value: price)
+        let formattedPrice = CurrencyFormatter.formattedPrice(price: price, to: Currencies.selectedCurrency)
         return "\(self.good.name) ( \(formattedPrice) per \(self.good.unit.rawValue))"
     }
     

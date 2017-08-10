@@ -18,6 +18,8 @@
 		871057E61F3CC69F004BD2EC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057E51F3CC69F004BD2EC /* Currency.swift */; };
 		871057E81F3CC6C0004BD2EC /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057E71F3CC6C0004BD2EC /* Currencies.swift */; };
 		871057EE1F3CD4F9004BD2EC /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057ED1F3CD4F8004BD2EC /* CurrencyFormatter.swift */; };
+		871057F01F3CD9DF004BD2EC /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057EF1F3CD9DF004BD2EC /* CurrencyTests.swift */; };
+		871057F21F3CDDFD004BD2EC /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871057F11F3CDDFD004BD2EC /* CurrencyFormatterTests.swift */; };
 		8793CC721F3C3B83006071ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC711F3C3B83006071ED /* AppDelegate.swift */; };
 		8793CC741F3C3B83006071ED /* GoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */; };
 		8793CC761F3C3B83006071ED /* GoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793CC751F3C3B83006071ED /* GoodDetailViewController.swift */; };
@@ -50,6 +52,8 @@
 		871057E51F3CC69F004BD2EC /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		871057E71F3CC6C0004BD2EC /* Currencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		871057ED1F3CD4F8004BD2EC /* CurrencyFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		871057EF1F3CD9DF004BD2EC /* CurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
+		871057F11F3CDDFD004BD2EC /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		8793CC6E1F3C3B83006071ED /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8793CC711F3C3B83006071ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8793CC731F3C3B83006071ED /* GoodsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTableViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				8793CC881F3C3B83006071ED /* ShoppingCartTests.swift */,
+				871057EF1F3CD9DF004BD2EC /* CurrencyTests.swift */,
+				871057F11F3CDDFD004BD2EC /* CurrencyFormatterTests.swift */,
 				8793CC8A1F3C3B83006071ED /* Info.plist */,
 			);
 			path = ShoppingCartTests;
@@ -356,7 +362,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				871057F01F3CD9DF004BD2EC /* CurrencyTests.swift in Sources */,
 				8793CC891F3C3B83006071ED /* ShoppingCartTests.swift in Sources */,
+				871057F21F3CDDFD004BD2EC /* CurrencyFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
