@@ -52,6 +52,7 @@ class Currencies {
     **/
     static func changeCurrency(to currency: Currency, completion: @escaping (Bool) -> Void) {
         if currency.exchangeRate != nil {
+            // Here we could check when this was downloaded and if it's "too old" we should redownload. 
             self.selectedCurrency = currency
             completion(true)
             return
