@@ -13,10 +13,12 @@ class GoodsTableViewController: UITableViewController {
     var goodDetailViewController: GoodDetailViewController? = nil
     var objects = [Any]()
     var goods = [Good]()
+    let shoppingCart = ShoppingCart()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Goods"
         goods = [Good(name: "Peas", price: NSDecimalNumber(decimal: 0.95), unit: .bag),
                  Good(name: "Eggs", price: NSDecimalNumber(decimal: 2.1), unit: .dozen),
                  Good(name: "Milk", price: NSDecimalNumber(decimal: 1.30), unit: .bottle),
@@ -25,7 +27,7 @@ class GoodsTableViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        let addButton = UIBarButtonItem(image: UIImage(named: "ShoppingBag"), style: .plain, target: self, action: #selector(showShoppingCart(_:)))
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
@@ -38,10 +40,8 @@ class GoodsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
 
-    func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+    func showShoppingCart(_ sender: Any) {
+        self.performSegue(withIdentifier: "shoppingCart", sender: sender)
     }
 
     // MARK: - Segues
@@ -51,10 +51,14 @@ class GoodsTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let good = self.goods[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! GoodDetailViewController
-                controller.good = GoodDetailsViewModel(good: good)
+                controller.goodViewModel = GoodDetailsViewModel(good: good)
+                controller.shoppingCart = self.shoppingCart
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
+        } else if segue.identifier == "shoppingCart" {
+            let controller = segue.destination as! ShoppingCartTableViewController
+            controller.shoppingCart = self.shoppingCart
         }
     }
 

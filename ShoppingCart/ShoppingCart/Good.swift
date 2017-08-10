@@ -17,6 +17,7 @@ enum GoodUnit: String {
 
 class Good {
     
+    let uuid = NSUUID()
     let name: String
     // Price / unit always in dollars ($).
     let price: NSDecimalNumber;
@@ -29,35 +30,3 @@ class Good {
     }
 }
 
-class GoodDetailsViewModel {
-    let good: Good
-    
-    init(good: Good) {
-        self.good = good
-    }
-    
-    var title: String {
-       return self.good.name + " ($ " + self.good.price.stringValue + " per " + self.good.unit.rawValue + ")"
-    }
-    
-    var detailedDescription: String {
-        return "Here we can return some extra information about the product that will be displayed on the product details screen"
-    }
-}
-
-class GoodCellViewModel {
-    
-    let good: Good
-    
-    init(good: Good) {
-        self.good = good
-    }
-    
-    var name: String {
-        return self.good.name
-    }
-    
-    var pricePerUnit: String {
-        return "$ " + self.good.price.stringValue + " per " + self.good.unit.rawValue
-    }
-}
