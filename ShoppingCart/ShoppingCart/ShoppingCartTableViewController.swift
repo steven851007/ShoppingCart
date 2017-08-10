@@ -65,7 +65,7 @@ class ShoppingCartTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GoodCell", for: indexPath)
-
+        cell.selectionStyle = .none
         let shoppingCartItem = ShoppingCartItemCellViewModel(shoppingCartItem: self.shoppingCart[indexPath.row])
         cell.textLabel?.text = shoppingCartItem.title
         cell.detailTextLabel?.text = shoppingCartItem.totalPrice
